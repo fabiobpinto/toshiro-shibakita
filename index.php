@@ -10,18 +10,18 @@ ini_set("display_errors", 1);
 header('Content-Type: text/html; charset=iso-8859-1');
 
 
-
 echo 'Versao Atual do PHP: ' . phpversion() . '<br>';
 
-$servername = "54.234.153.24";
-$username = "root";
-$password = "Senha123";
-$database = "meubanco";
+// Carregar configurações
+$config = include 'db_config.php';
 
 // Criar conexão
-
-
-$link = new mysqli($servername, $username, $password, $database);
+$link = new mysqli(
+    $config['servername'], 
+    $config['username'], 
+    $config['password'], 
+    $config['database']
+);
 
 /* check connection */
 if (mysqli_connect_errno()) {
